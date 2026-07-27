@@ -89,7 +89,7 @@ func TestZipSources(t *testing.T) {
 			}
 
 			targetZip := filepath.Join(tempDir, "test.zip")
-			err = zipSources(sources, targetZip, &processBar)
+			err = zipSources(sources, targetZip, processBar)
 
 			if tt.expectError {
 				require.Error(t, err, "zipSources should return error")
@@ -148,7 +148,7 @@ func TestZipSourcesInvalidTarget(t *testing.T) {
 	require.NoError(t, err, "should be able to create test file")
 
 	invalidTarget := "/invalid/path/test.zip"
-	err = zipSources([]string{testFile}, invalidTarget, &processBar)
+	err = zipSources([]string{testFile}, invalidTarget, processBar)
 	require.Error(t, err, "zipSources should return error for invalid target")
 }
 
